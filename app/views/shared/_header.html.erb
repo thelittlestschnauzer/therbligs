@@ -1,86 +1,53 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <!-- Navbar Container -->
+<nav class="navbar navbar-expand-sm navbar-fixed-top">
   <div class="container">
-
-    <!-- Navbar Header [contains both toggle button and navbar brand] -->
+  <!-- Navbar Header [contains both toggle button and navbar brand] -->
     <div class="navbar-header">
       <!-- Toggle Button [handles opening navbar components on mobile screens]-->
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#exampleNavComponents" aria-expanded"false">
-        <i class="fas fa-bars"></i>      
+        <i class="fas fa-align-center"></i>
       </button>
 
       <!-- Navbar Brand -->
-      <a href="#" class="navbar-brand">
-        TherBligs            
-      </a>
+      <%= link_to "Therbligs", root_path, class: 'navbar-brand', id: "logo" %> 
     </div>
-
 
     <!-- Navbar Collapse [contains navbar components such as navbar menu and forms ] -->
     <div class="collapse navbar-collapse" id="exampleNavComponents">
-
-        <!-- Navbar Menu -->
-         <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#">Page 1</a>
-            </li>
-            <li>
-              <a href="#">Page 2</a>
-            </li>
-            <li>
-              <a href="#">Page 3</a>
-            </li>
-            <!-- Navbar link with a dropdown menu -->
-              <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-            <!-- Navbar Form -->
-            <form action="#" class="navbar-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-
-            <!-- Navbar Button -->
-            <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-
-            <!-- Navbar Text -->
-             <p class="navbar-text">Signed in as Mark Otto</p>
-
-        </div>
+    
+      <!-- Navbar Menu -->
+      <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li class="active">
+          <a href="#">Page 1</a>
+        </li>
+        <li>
+          <a href="#">Page 2</a>
+        </li>
+        <li>
+          <a href="#">Page 3</a>
+        </li>
+        
+        <!-- Navbar link with a dropdown menu -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'profile', edit_user_registration %></li>
+            <li><%= link_to 'logout', destroy_user_session, method: :delete %></li>
+          </ul>
+        </li>
+        <% else %>
+        <li><%= link_to 'Login', user_session, class: 'nav-item navbar-right' %></li>
+      </ul>
+      <%= link_to 'Sign up', new_user_registration_url, class: 'btn navbar-btn navbar-right' %>
+      </div>
+      <% end %> 
     </div>
 </nav>
-<ul class="nav pull-right">
-  <li><%= link_to "Home",         root_path %></li>
-  <li><%= link_to "Admin",        new_admin_session_path %></li>
-  <% if user_signed_in? %>
-    <li id="fat-menu" class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Account <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "Profile", edit_user_registration_path %></li>
-        <li><%= link_to "Settings", '#' %></li>
-        <li class="divider"></li>
-        <li>
-          <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-        </li>
-      </ul>
-    </li>
-    <li> <%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign in", new_user_session_path %></li>
-  <% end %>
-</ul>
+            
+  
+    
+     
+        
+   
