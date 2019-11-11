@@ -13,17 +13,15 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheets" href="style.scss">
     <script src="https://kit.fontawesome.com/3836d342c9.js" crossorigin="anonymous"></script>
-    
+
   </head>
 
   <body>
   <%= render 'shared/header' %>
-  
-    <%= yield %>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- Bootstrap Js CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div class="container">
+      <%= render 'shared/messages' %>
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
